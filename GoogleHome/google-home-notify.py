@@ -4,12 +4,13 @@ import pychromecast
 import os
 
 host = os.environ["MQTT_HOST"]
-port = os.environ["MQTT_PORT"]
+port = int(os.environ["MQTT_PORT"])
 
 def on_connect(client, userdata, flags, response_code):
-    client.subscribe("google-home-notification")
+    client.subscribe("/google-home-notification")
 
 def on_message(client, userdata, msg):
+    print("on message")
     speak(str(msg.payload))
 
 def speak(text):
@@ -31,3 +32,12 @@ def speak(text):
 
     mc = cast.media_controller
     mc.play_media(url, "audio/mp3")
+
+if __name__=="__main__":
+
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.on_message = on_message
+
+    client.connect(host, port=port, keepalive=60)
+    client.loop_forever()
