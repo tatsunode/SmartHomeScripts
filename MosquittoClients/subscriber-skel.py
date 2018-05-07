@@ -6,7 +6,7 @@ port = int(os.environ["MQTT_PORT"])
 
 print(host, port)
 
-topic = "test/#"
+topic = "#"
 
 def on_connect(client, userdata, flags, response_code):
     print("status {}".format(response_code))

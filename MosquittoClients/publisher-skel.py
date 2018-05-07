@@ -14,7 +14,7 @@ client.connect(host, port=port, keepalive=60)
 topic = "test/alpha"
 
 for i in range(10):
-    client.publish(topic, "value")
-    sleep(1)
+    client.publish(topic, "value" + str(i))
+    sleep(3)
 
 client.disconnect()
