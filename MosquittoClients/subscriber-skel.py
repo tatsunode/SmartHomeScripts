@@ -14,7 +14,7 @@ def on_connect(client, userdata, flags, response_code):
     client.subscribe(topic)
 
 def on_message(client, userdata, msg):
-    print(msg.topic, str(msg.payload))
+    print(msg.topic, msg.payload.decode())
 
 if __name__ == "__main__":
 
