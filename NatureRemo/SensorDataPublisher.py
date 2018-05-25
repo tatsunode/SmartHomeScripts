@@ -25,11 +25,11 @@ if response:
     temperature = device_data["newest_events"]["te"]["val"]
     illuminance = device_data["newest_events"]["il"]["val"]
 
-    print(humidity, temperature, illuminance)
+    # print(humidity, temperature, illuminance)
 
     client.publish("humidity/main", humidity)
     time.sleep(1) 
     client.publish("temperature/main", temperature)
     time.sleep(1) 
-    client.publish("illuminance/main", temperature)
+    client.publish("illuminance/main", illuminance)
     time.sleep(1) 
