@@ -27,9 +27,9 @@ if response:
 
     # print(humidity, temperature, illuminance)
 
-    client.publish("humidity/main", humidity)
+    client.publish("humidity/main/natureremo", humidity)
     time.sleep(1) 
-    client.publish("temperature/main", temperature)
+    client.publish("temperature/main/natureremo", temperature)
     time.sleep(1) 
-    client.publish("illuminance/main", illuminance)
+    client.publish("illuminance/main/natureremo", illuminance)
     time.sleep(1) 

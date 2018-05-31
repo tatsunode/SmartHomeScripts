@@ -11,10 +11,10 @@ client = mqtt.Client()
 
 client.connect(host, port=port, keepalive=60)
 
-topic = "test/alpha"
+topic = "led/main/yellow"
 
 for i in range(10):
-    client.publish(topic, "value" + str(i))
+    client.publish(topic, 0)
     sleep(3)
 
 client.disconnect()
