@@ -21,7 +21,7 @@ function main() {
         firebase.auth().signInWithEmailAndPassword(authEmail, authPass)
             .then(function() {
                 console.log("mqtt, firebase initialization success")
-                startMqttToFirebase(firebase, mqttClient);
+                // startMqttToFirebase(firebase, mqttClient);
                 startFirebaseToMqtt(firebase, mqttClient);
             })
             .catch(function(error) {

@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const firebase = require('firebase');
 
 var config = {}
+
 config.apiKey = functions.config().db.apikey;
 config.authDomain = functions.config().db.authdomain;
 config.databaseURL = functions.config().db.databaseurl;

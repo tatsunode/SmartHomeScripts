@@ -1,8 +1,9 @@
 from gtts import gTTS
 import paho.mqtt.client as mqtt
+from datetime import datetime as dt
 import pychromecast
 import os
-from datetime import datetime as dt
+import sys
 import time
 import shutil
 
@@ -36,6 +37,7 @@ def speak(text, volume=0.1):
 
     except AssertionError:
         # No text to send TTS
+        print("No Text To Send", file=sys.stderr)
         return
 
     server_ip_address = host
@@ -54,6 +56,7 @@ def speak(text, volume=0.1):
         time.sleep(1)
 
     cast.set_volume(DEFAULT_VOLUME)
+    print(str(dt.now()), url, text, file=sys.stderr)
     cast.quit_app()
 
 
