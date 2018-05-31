@@ -27,10 +27,23 @@ exports.iftttToRealtimeDatabase = functions.https.onRequest((request, response) 
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(user => {
+            /*
             firebase.database().ref("/mqtt/" + topic).set("").then(function() {
-                firebase.database().ref("/mqtt/" + topic).set(value);
-                response.send("topic: " + value);
+                firebase.database().ref("/mqtt/" + topic).set(value).then(function() {
+                    firebase.auth().signOut();
+                    response.send("topic: " + value);
+                    return;
+                });
             })
+            */
+            firebase.database().ref("/mqtt/" + topic).set("").then(function() {
+                firebase.database().ref("/mqtt/" + topic).set(JSON.stringify(value)).then(function() {
+                    firebase.auth().signOut();
+                    response.send("topic: " + value);
+                    return;
+                });
+            })
+
         })
         .catch(error => {
             response.send("error");
